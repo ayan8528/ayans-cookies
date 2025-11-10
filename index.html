@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Firoz Cookies — Fresh, Organic & Handcrafted</title>
+  <meta name="description" content="Firoz Cookies — handcrafted, small-batch cookies. Owner can edit products with a secure PIN. Mobile-first, fast, and clean." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* ======= THEME ======= */
+    :root{
+      --bg:#f7fbf8;          /* airy, organic */
+      --card:#ffffff;
+      --ink:#162218;          /* deep green text */
+      --muted:#5c6f61;        /* mid green */
+      --brand:#1ea672;        /* emerald */
+      --brand-2:#c2f0db;      /* mint wash */
+      --accent:#ffd6a5;       /* warm accent */
+      --ring:rgba(30,166,114,.25);
+      --border:#e5efe7;
+      --shadow:0 16px 40px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.05);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--bg); color:var(--ink); font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:1240px; margin:0 auto; padding:0 20px}
+
+    /* ======= HEADER ======= */
+    header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--border)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:46px; height:46px; border-radius:14px; background:linear-gradient(145deg,#e9f7ef,#c5f3df); display:grid; place-items:center; font-size:22px; box-shadow:var(--shadow)}
+    .brand-name{font-weight:800; letter-spacing:.2px}
+    .actions{display:flex; align-items:center; gap:8px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 14px; border-radius:14px; border:1px solid var(--border); background:var(--card); font-weight:600}
+    .btn.primary{background:var(--brand); color:#fff; border-color:transparent}
+
+    /* ======= HERO ======= */
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:18px; padding:26px 0}
+    .hero-card{border:1px solid var(--border); background:linear-gradient(160deg,#f3fff7,#e6fff2 60%); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+    .hero-inner{display:grid; grid-template-columns:1.1fr .9fr}
+    .hero-copy{padding:40px}
+    h1{margin:0 0 10px; font-size:44px; line-height:1.06}
+    .lead{color:var(--muted); margin:0 0 14px}
+    .hero-cta{display:flex; gap:10px; flex-wrap:wrap}
+    .hero-img{min-height:320px; background:url('https://images.unsplash.com/photo-1610395219791-21bd2b6830b6?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat}
+
+    /* Feature strip */
+    .features{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .chip{display:flex; align-items:center; gap:10px; padding:12px; border-radius:14px; background:#f1fbf6; border:1px solid var(--border)}
+
+    /* ======= CATEGORY BANNERS ======= */
+    .cats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .cat{position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--border)}
+    .cat img{aspect-ratio: 16/9; object-fit:cover}
+    .cat .label{position:absolute; left:12px; bottom:12px; background:rgba(255,255,255,.92); padding:8px 12px; border-radius:999px; font-weight:800}
+
+    /* ======= SECTION STYLES ======= */
+    section{padding:22px 0}
+    .kicker{font-weight:800; color:var(--brand); text-transform:uppercase; letter-spacing:.2px; font-size:12px}
+    .h2{font-size:30px; margin:6px 0 10px}
+    .subtle{color:var(--muted); font-size:13px}
+
+    /* ======= SHOP CONTROLS ======= */
+    .shopbar{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:8px 0 16px}
+    .input, select{width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--border); outline:none}
+    .input:focus, select:focus{box-shadow:0 0 0 4px var(--ring); border-color:var(--brand)}
+
+    /* ======= PRODUCT GRID ======= */
+    .grid{display:grid; gap:16px}
+    .grid.products{grid-template-columns:repeat(2,1fr)}
+    @media (min-width:900px){.grid.products{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
+    .thumb{aspect-ratio:4/3; background:#eef6f0}
+    .pad{padding:12px}
+    .price{font-weight:800}
+    .badge{display:inline-block; padding:4px 8px; border-radius:999px; background:#eef8ff; border:1px solid #e3f0ff; font-size:12px; margin-right:8px}
+    .row{display:flex; align-items:center; justify-content:space-between}
+    .rating{font-size:12px; color:#eab308}
+
+    /* Quick-add footer */
+    .pfooter{margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:8px; padding:12px; border-top:1px solid var(--border)}
+    .qty{display:flex; align-items:center; gap:8px}
+    .qty button{width:28px; height:28px; border-radius:8px; border:1px solid var(--border); background:#fff}
+
+    /* ======= CART DRAWER ======= */
+    .drawer{position:fixed; inset:0; pointer-events:none}
+    .drawer.open{pointer-events:auto}
+    .drawer .backdrop{position:absolute; inset:0; background:rgba(0,0,0,.35); opacity:0; transition:.2s}
+    .drawer.open .backdrop{opacity:1}
+    .drawer .panel{position:absolute; top:0; right:-440px; width:100%; max-width:440px; height:100%; background:#fff; box-shadow:-12px 0 34px rgba(0,0,0,.2); transition:.25s; display:flex; flex-direction:column}
+    .drawer.open .panel{right:0}
+    .cart-list{padding:10px; overflow:auto; flex:1}
+    .cart-item{display:grid; grid-template-columns:64px 1fr auto; gap:10px; border:1px solid var(--border); border-radius:12px; padding:8px; margin:8px 0}
+
+    /* ======= FOOTER ======= */
+    footer{margin-top:30px; padding:34px 0 42px; border-top:1px solid var(--border); color:var(--muted)}
+
+    /* ======= OWNER UI ======= */
+    .fab{position:fixed; right:18px; bottom:18px; z-index:60}
+    .fab button{width:56px; height:56px; border-radius:50%; border:none; box-shadow:var(--shadow); background:var(--brand); color:#fff; font-weight:800; font-size:18px}
+
+    .admin{position:fixed; top:0; left:0; width:440px; max-width:95vw; height:100%; background:#fff; border-right:1px solid var(--border); box-shadow:12px 0 30px rgba(0,0,0,.14); transform:translateX(-110%); transition:.25s; z-index:70; display:flex; flex-direction:column}
+    .admin.open{transform:translateX(0)}
+    .admin header{padding:14px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between}
+    .tabs{display:flex; gap:6px; padding:10px; border-bottom:1px solid var(--border)}
+    .tab{padding:8px 10px; border:1px solid var(--border); border-radius:8px; background:#f7fbf8; cursor:pointer; font-weight:600}
+    .tab.active{background:#eaf9f1; border-color:#cfeede}
+    .panel-wrap{padding:12px; overflow:auto}
+
+    label{font-weight:600; font-size:12px}
+    input,textarea,select{width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--border); outline:none}
+    input:focus,textarea:focus,select:focus{box-shadow:0 0 0 4px var(--ring); border-color:var(--brand)}
+    .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .row3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px}
+    .list{display:grid; gap:10px}
+    .item{border:1px solid var(--border); border-radius:12px; padding:10px; display:grid; gap:8px}
+    .mutebtn{background:#f6faf7; border:1px solid var(--border); border-radius:10px; padding:8px 10px; font-weight:600}
+    .danger{background:#fff0f3; border-color:#ffd5de; color:#b91c1c}
+
+    .preview-img{width:100%; height:160px; background:#eef6f0 center/cover no-repeat; border:1px solid var(--border); border-radius:10px}
+
+    /* PIN modal */
+    .modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.45); z-index:80}
+    .modal.open{display:grid}
+    .sheet{background:#fff; width:92vw; max-width:420px; border-radius:16px; padding:18px; border:1px solid var(--border); box-shadow:var(--shadow)}
+
+    /* ======= RESPONSIVE ======= */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .hero-inner{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
+      .cats{grid-template-columns:1fr 1fr}
+      .shopbar{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <div class="logo">🍪</div>
+        <div>
+          <div class="brand-name" id="brandName">Firoz Cookies</div>
+          <div class="subtle">Organic • Small-batch • Handcrafted</div>
+        </div>
+      </a>
+      <nav class="actions">
+        <a class="btn" href="#shop">Shop</a>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#contact">Contact</a>
+        <button class="btn primary" id="openCart">Cart <span id="cartCount" style="margin-left:6px">0</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======= HERO ======= -->
+  <main class="container" id="home">
+    <div class="hero">
+      <div class="hero-card hero-inner">
+        <div class="hero-copy">
+          <h1 id="siteTitle">Fresh & Organic Cookies, Baked Daily.</h1>
+          <p class="lead" id="siteLead">Slow-fermented dough, real butter and Belgian chocolate for that caramel bite.</p>
+          <div class="hero-cta">
+            <a href="#shop" class="btn primary">Shop Now</a>
+            <a href="#contact" class="btn">Bulk Orders</a>
+          </div>
+          <div class="features" style="margin-top:14px">
+            <div class="chip">🌿 100% Real Ingredients</div>
+            <div class="chip">🚚 Same‑day Delivery</div>
+            <div class="chip">🎁 Gift Boxes & Notes</div>
+          </div>
+        </div>
+        <div class="hero-img" id="heroImg" role="img" aria-label="Cookies"></div>
+      </div>
+      <div class="cats">
+        <a class="cat" href="#shop"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1200&auto=format&fit=crop" alt="Chocolate"><div class="label">Chocolate</div></a>
+        <a class="cat" href="#shop"><img src="https://images.unsplash.com/photo-1488477304112-4944851de03c?q=80&w=1200&auto=format&fit=crop" alt="Nutty"><div class="label">Nutty</div></a>
+        <a class="cat" href="#shop"><img src="https://images.unsplash.com/photo-1541782814454-bb46a4807520?q=80&w=1200&auto=format&fit=crop" alt="Festive"><div class="label">Festive</div></a>
+      </div>
+    </div>
+
+    <!-- ======= SHOP ======= -->
+    <section id="shop">
+      <div class="kicker">Shop</div>
+      <div class="h2">Our best‑sellers</div>
+      <div class="shopbar">
+        <input id="search" class="input" placeholder="Search products (e.g., choco, walnut)">
+        <select id="filterCat">
+          <option value="">All categories</option>
+        </select>
+        <select id="sortBy">
+          <option value="pop">Sort: Popular</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+      <div class="grid products" id="productGrid"></div>
+      <p class="subtle">All prices include taxes. Checkout via WhatsApp.</p>
+    </section>
+
+    <!-- ======= ABOUT ======= -->
+    <section id="about" class="card" style="padding:18px">
+      <div class="kicker">Our Story</div>
+      <div class="h2">Honest Ingredients. Slow Dough.</div>
+      <p class="subtle" id="aboutText">Founded by Firoz, we bake in small batches with real butter, desi khaand and premium chocolate. Eco‑friendly packaging and citywide delivery.</p>
+    </section>
+
+    <!-- ======= CONTACT ======= -->
+    <section id="contact" class="card" style="padding:18px">
+      <div class="kicker">Contact</div>
+      <div class="h2">Call, WhatsApp or Form</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a id="waLink" class="btn primary" target="_blank" rel="noopener">WhatsApp my Cart</a>
+        <a class="btn" id="callBtn" href="#">Call</a>
+        <a class="btn" target="_blank" rel="noopener" id="formLink" href="#">Bulk order form</a>
+      </div>
+      <p class="subtle">Owner can edit these links via the PIN panel.</p>
+    </section>
+  </main>
+
+  <!-- ======= CART ======= -->
+  <div id="drawer" class="drawer" aria-hidden="true">
+    <div class="backdrop" onclick="toggleDrawer(false)"></div>
+    <aside class="panel" role="dialog" aria-label="Shopping Cart">
+      <header class="nav" style="padding:12px 14px">
+        <strong>Shopping Cart</strong>
+        <button class="btn" onclick="toggleDrawer(false)">Close</button>
+      </header>
+      <div id="cartList" class="cart-list"></div>
+      <div style="padding:12px; border-top:1px solid var(--border)">
+        <div class="subtle" id="cartSubtotal">Subtotal: ₹0</div>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <button class="btn" onclick="clearCart()">Clear</button>
+          <a class="btn primary" id="checkoutWA" target="_blank" rel="noopener">Checkout on WhatsApp</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <div class="container" style="display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr">
+      <div>
+        <div class="logo">🍪</div>
+        <p class="subtle">© <span id="year"></span> Firoz Cookies</p>
+      </div>
+      <div>
+        <strong>Shop</strong>
+        <div class="subtle"><a href="#shop">Menu</a> · <a href="#about">About</a></div>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <div class="subtle" id="footerContact">hello@firozcookies.in · +91 99999 99999</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======= OWNER BUTTON / ADMIN PANEL ======= -->
+  <div class="fab"><button id="ownerBtn" title="Owner login">✎</button></div>
+
+  <aside id="admin" class="admin" aria-label="Owner panel">
+    <header>
+      <strong>Owner Panel</strong>
+      <div>
+        <button class="mutebtn" onclick="exportJSON()">Export JSON</button>
+        <button class="mutebtn" onclick="downloadSnapshot()">Save HTML</button>
+        <button class="mutebtn danger" onclick="logoutOwner()">Lock</button>
+      </div>
+    </header>
+    <div class="tabs">
+      <div class="tab active" data-tab="settings">Store</div>
+      <div class="tab" data-tab="products">Products</div>
+      <div class="tab" data-tab="pin">Security</div>
+    </div>
+    <div class="panel-wrap">
+      <!-- STORE SETTINGS -->
+      <div class="panel" id="panel-settings">
+        <div class="item">
+          <div class="row2">
+            <div><label>Store name</label><input id="setName" placeholder="Firoz Cookies"></div>
+            <div><label>Currency symbol</label><input id="setCur" placeholder="₹"></div>
+          </div>
+          <div class="row2">
+            <div><label>WhatsApp (with country code)</label><input id="setWA" placeholder="+919999999999"></div>
+            <div><label>Call tel</label><input id="setCall" placeholder="+919999999999"></div>
+          </div>
+          <div class="row2">
+            <div><label>Bulk order form URL</label><input id="setForm" placeholder="https://forms.gle/..."/></div>
+            <div><label>Footer contact line</label><input id="setFooter" placeholder="hello@firozcookies.in · +91 ..."></div>
+          </div>
+          <div><label>About text</label><textarea id="setAbout" rows="3" placeholder="Our bakery story..."></textarea></div>
+          <div class="row2">
+            <div><label>Hero title</label><input id="setHeroTitle" placeholder="Fresh & Organic Cookies, Baked Daily."></div>
+            <div><label>Hero subtitle</label><input id="setHeroLead" placeholder="Slow dough ..."></div>
+          </div>
+          <div><label>Hero image URL</label><input id="setHeroImg" placeholder="https://..."><div id="heroPreview" class="preview-img" style="margin-top:8px"></div></div>
+          <div style="display:flex; gap:10px; margin-top:8px"><button class="btn primary" onclick="applySettings()">Save settings</button><button class="btn" onclick="importJSON()">Import JSON</button></div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS -->
+      <div class="panel" id="panel-products" style="display:none">
+        <div class="item">
+          <div class="row3">
+            <div><label>Name</label><input id="pName"></div>
+            <div><label>Price</label><input id="pPrice" type="number" min="0"></div>
+            <div><label>SKU</label><input id="pSKU" placeholder="optional"></div>
+          </div>
+          <div class="row3">
+            <div><label>Category</label><input id="pCat" placeholder="Chocolate"></div>
+            <div><label>Badge</label><input id="pBadge" placeholder="Bestseller"></div>
+            <div><label>Rating (0–5)</label><input id="pRating" type="number" min="0" max="5" step="0.5"></div>
+          </div>
+          <div class="row2">
+            <div><label>Image URL</label><input id="pImg" placeholder="https://..."></div>
+            <div><label>Stock</label><select id="pStock"><option value="in">In stock</option><option value="out">Out of stock</option></select></div>
+          </div>
+          <div><label>Description</label><input id="pDesc" placeholder="optional"></div>
+          <div style="display:flex; gap:10px; margin-top:8px">
+            <button class="btn primary" onclick="addProduct()">Add product</button>
+            <button class="btn" onclick="clearProducts()">Clear all (local)</button>
+          </div>
+        </div>
+        <div id="productsAdmin" class="list" style="margin-top:10px"></div>
+      </div>
+
+      <!-- PIN / SECURITY -->
+      <div class="panel" id="panel-pin" style="display:none">
+        <div class="item">
+          <label>Current PIN</label>
+          <input id="curPin" type="password" placeholder="enter current PIN">
+          <label style="margin-top:8px">New PIN</label>
+          <input id="newPin" type="password" placeholder="set a new PIN">
+          <div style="display:flex; gap:10px; margin-top:8px">
+            <button class="btn primary" onclick="changePIN()">Change PIN</button>
+            <button class="btn danger" onclick="resetData()">Reset all data</button>
+          </div>
+          <p class="subtle" style="margin-top:8px">Default PIN: <code>FIROZ-0000</code></p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- PIN MODAL -->
+  <div id="pinModal" class="modal" aria-hidden="true">
+    <div class="sheet">
+      <h3 style="margin:0 0 6px">Owner Login</h3>
+      <p class="subtle">Enter your PIN to edit the site.</p>
+      <input id="pinInput" placeholder="Enter PIN" type="password" />
+      <div style="display:flex; gap:10px; margin-top:10px">
+        <button class="btn primary" onclick="submitPIN()">Unlock</button>
+        <button class="btn" onclick="closePIN()">Cancel</button>
+      </div>
+      <p class="subtle" style="margin-top:10px">Default PIN: <code>FIROZ-0000</code></p>
+    </div>
+  </div>
+
+  <script>
+    /* =================== DATA & STATE =================== */
+    const LS_KEY = 'firoz_site_data_v1';
+    const PIN_KEY = 'firoz_pin';
+
+    const DEFAULTS = {
+      storeName: 'Firoz Cookies',
+      currency: '₹',
+      whatsapp: '+919999999999',
+      call: '+919999999999',
+      form: 'https://forms.gle/your-form',
+      footer: 'hello@firozcookies.in · +91 99999 99999',
+      heroTitle: 'Fresh & Organic Cookies, Baked Daily.',
+      heroLead: 'Slow-fermented dough, real butter and Belgian chocolate for that caramel bite.',
+      heroImg: 'https://images.unsplash.com/photo-1610395219791-21bd2b6830b6?q=80&w=1600&auto=format&fit=crop',
+      about: 'Founded by Firoz, we bake in small batches with real butter, desi khaand and premium chocolate. Eco‑friendly packaging and citywide delivery.',
+      products: [
+        {id:'ccc-101', name:'Classic Chocochip', price:99, img:'https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=1600&auto=format&fit=crop', cat:'Chocolate', badge:'Bestseller', rating:5, sku:'CCC101', stock:'in'},
+        {id:'rv-102', name:'Red Velvet White Choc', price:119, img:'https://images.unsplash.com/photo-1607958996333-41aef7caef91?q=80&w=1600&auto=format&fit=crop', cat:'Velvet', badge:'New', rating:4.5, sku:'RV102', stock:'in'},
+        {id:'oat-103', name:'Oat & Raisin', price:99, img:'https://images.unsplash.com/photo-1614607242094-953c0b8f0fef?q=80&w=1600&auto=format&fit=crop', cat:'Healthy', rating:4, sku:'OAT103', stock:'in'},
+        {id:'db-104', name:'Double Chocolate', price:119, img:'https://images.unsplash.com/photo-1508737804141-4c3b688e2546?q=80&w=1600&auto=format&fit=crop', cat:'Chocolate', rating:4.5, sku:'DB104', stock:'in'}
+      ]
+    };
+
+    const state = {
+      data: JSON.parse(localStorage.getItem(LS_KEY) || 'null') || DEFAULTS,
+      cart: JSON.parse(localStorage.getItem('firoz_cart')||'[]'),
+      isOwner:false,
+      activeTab:'settings'
+    };
+
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+    const el = (t,c,h) => { const e=document.createElement(t); if(c) e.className=c; if(h!==undefined) e.innerHTML=h; return e; };
+    const money = n => `${state.data.currency}${Number(n).toLocaleString('en-IN')}`;
+
+    function save(){ localStorage.setItem(LS_KEY, JSON.stringify(state.data)); buildWA(); }
+
+    /* =================== RENDER =================== */
+    function render(){
+      document.title = state.data.storeName + ' — Fresh, Organic & Handcrafted';
+      $('#brandName').textContent = state.data.storeName;
+      $('#siteTitle').textContent = state.data.heroTitle;
+      $('#siteLead').textContent = state.data.heroLead;
+      $('#heroImg').style.backgroundImage = `url(${state.data.heroImg})`;
+      $('#aboutText').textContent = state.data.about;
+      $('#footerContact').textContent = state.data.footer;
+      $('#callBtn').href = 'tel:'+state.data.call;
+      $('#formLink').href = state.data.form;
+
+      // Fill category filter
+      const cats = [...new Set(state.data.products.map(p=>p.cat).filter(Boolean))];
+      const sel = $('#filterCat'); sel.innerHTML = '<option value="">All categories</option>' + cats.map(c=>`<option value="${c}">${c}</option>`).join('');
+
+      renderProducts();
+      buildAdminList();
+      updateBadge(); renderCart(); buildWA();
+      $('#year').textContent = new Date().getFullYear();
+      $('#heroPreview').style.backgroundImage = `url(${state.data.heroImg})`;
+    }
+
+    function starRow(r){
+      const full = Math.floor(r||0), half = (r||0)%1>=0.5; let s='';
+      for(let i=0;i<full;i++) s+='★'; if(half) s+='☆'; return `<span class="rating" aria-label="${r||0} stars">${s}</span>`;
+    }
+
+    function filteredSorted(){
+      const q = $('#search').value.trim().toLowerCase();
+      const cat = $('#filterCat').value;
+      const sort = $('#sortBy').value;
+      let arr = state.data.products.filter(p=>{
+        const matchesQ = !q || [p.name,p.cat,p.sku,p.badge].filter(Boolean).join(' ').toLowerCase().includes(q);
+        const matchesC = !cat || p.cat===cat; return matchesQ && matchesC;
+      });
+      if(sort==='price-asc') arr.sort((a,b)=>a.price-b.price);
+      else if(sort==='price-desc') arr.sort((a,b)=>b.price-a.price);
+      else if(sort==='name') arr.sort((a,b)=>a.name.localeCompare(b.name));
+      return arr;
+    }
+
+    function renderProducts(){
+      const grid = $('#productGrid'); grid.innerHTML='';
+      filteredSorted().forEach(p=>{
+        const card = el('div','card');
+        const th = el('div','thumb'); th.style.background = `url(${p.img}) center/cover`; card.appendChild(th);
+        const pad = el('div','pad');
+        pad.appendChild(el('div','row',`<strong>${p.name}</strong><span>${starRow(p.rating)}</span>`));
+        pad.appendChild(el('div','subtle', `${p.cat||''} ${p.badge? '<span class="badge">'+p.badge+'</span>':''}`));
+        card.appendChild(pad);
+        const foot = el('div','pfooter');
+        const left = el('div',null,`<div class="price">${money(p.price)}</div><div class="subtle">${p.stock==='out'?'Out of stock':'In stock'}</div>`);
+        const right = el('div','qty');
+        const minus = el('button'); minus.textContent='-';
+        const span = el('span'); span.textContent='1';
+        const plus = el('button'); plus.textContent='+';
+        let qty=1; minus.onclick=()=>{qty=Math.max(1,qty-1); span.textContent=qty}; plus.onclick=()=>{qty++; span.textContent=qty};
+        const add = el('button','btn primary'); add.textContent='Add'; add.onclick=()=>addToCart(p.id, qty);
+        right.append(minus,span,plus,add); foot.append(left,right); card.appendChild(foot);
+        grid.appendChild(card);
+      });
+    }
+
+    $('#search').addEventListener('input', renderProducts);
+    $('#filterCat').addEventListener('change', renderProducts);
+    $('#sortBy').addEventListener('change', renderProducts);
+
+    /* =================== CART =================== */
+    function updateBadge(){ $('#cartCount').textContent = state.cart.reduce((a,i)=>a+i.qty,0); }
+    function saveCart(){ localStorage.setItem('firoz_cart', JSON.stringify(state.cart)); updateBadge(); renderCart(); buildWA(); }
+    function addToCart(id,qty=1){ const i=state.cart.findIndex(x=>x.id===id); if(i>-1) state.cart[i].qty+=qty; else state.cart.push({id,qty}); saveCart(); toggleDrawer(true); }
+    function clearCart(){ state.cart=[]; saveCart(); }
+    function removeAt(i){ state.cart.splice(i,1); saveCart(); }
+    function itemById(id){ return state.data.products.find(p=>p.id===id) || {name:id, price:0, img:'https://placehold.co/120x90'}; }
+    function total(){ return state.cart.reduce((s,it)=> s + (itemById(it.id).price*it.qty), 0); }
+    function renderCart(){
+      const list = $('#cartList'); list.innerHTML='';
+      state.cart.forEach((it,i)=>{
+        const p = itemById(it.id);
+        const row = el('div','cart-item');
+        const th = el('div','thumb'); th.style.borderRadius='10px'; th.style.background=`url(${p.img}) center/cover`;
+        const meta = el('div',null,`<div><strong>${p.name}</strong></div><div class="subtle">${money(p.price)} × ${it.qty}</div>`);
+        const act = el('div'); act.style.display='grid'; act.style.placeItems='end'; act.style.gap='6px';
+        const up=el('button','btn'); up.textContent='+'; up.onclick=()=>{it.qty++; saveCart();};
+        const dn=el('button','btn'); dn.textContent='-'; dn.onclick=()=>{it.qty=Math.max(1,it.qty-1); saveCart();};
+        const rm=el('button','btn'); rm.textContent='Remove'; rm.onclick=()=>removeAt(i);
+        act.append(up,dn,rm); row.append(th,meta,act); list.appendChild(row);
+      });
+      $('#cartSubtotal').textContent = 'Subtotal: '+money(total());
+    }
+    function toggleDrawer(open){ const d=$('#drawer'); if(open){ d.classList.add('open'); d.setAttribute('aria-hidden','false'); } else { d.classList.remove('open'); d.setAttribute('aria-hidden','true'); } }
+
+    /* =================== OWNER MODE =================== */
+    function openPIN(){ $('#pinModal').classList.add('open'); $('#pinModal').setAttribute('aria-hidden','false'); $('#pinInput').focus(); }
+    function closePIN(){ $('#pinModal').classList.remove('open'); $('#pinModal').setAttribute('aria-hidden','true'); $('#pinInput').value=''; }
+    function submitPIN(){
+      const attempt = $('#pinInput').value.trim();
+      const pin = localStorage.getItem(PIN_KEY) || 'FIROZ-0000';
+      if(attempt===pin){ state.isOwner=true; $('#admin').classList.add('open'); closePIN(); alert('Owner mode unlocked'); }
+      else alert('Wrong PIN');
+    }
+    function logoutOwner(){ state.isOwner=false; $('#admin').classList.remove('open'); alert('Locked'); }
+    $('#ownerBtn').addEventListener('click', ()=> state.isOwner? $('#admin').classList.toggle('open') : openPIN());
+
+    // Tabs
+    $$('.tab').forEach(t=>t.addEventListener('click',()=>{
+      $$('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active');
+      state.activeTab = t.dataset.tab;
+      ['settings','products','pin'].forEach(k=> $('#panel-'+k).style.display = k===state.activeTab? 'block':'none');
+    }));
+
+    // Settings save
+    function applySettings(){
+      const d = state.data;
+      d.storeName = $('#setName').value || d.storeName; $('#brandName').textContent=d.storeName;
+      d.currency = $('#setCur').value || d.currency;
+      d.whatsapp = $('#setWA').value || d.whatsapp;
+      d.call = $('#setCall').value || d.call;
+      d.form = $('#setForm').value || d.form;
+      d.footer = $('#setFooter').value || d.footer;
+      d.about = $('#setAbout').value || d.about;
+      d.heroTitle = $('#setHeroTitle').value || d.heroTitle;
+      d.heroLead = $('#setHeroLead').value || d.heroLead;
+      d.heroImg = $('#setHeroImg').value || d.heroImg;
+      save(); render(); alert('Settings saved');
+    }
+
+    // Live preview hero image
+    $('#setHeroImg')?.addEventListener('input', e=>{ $('#heroPreview').style.backgroundImage = `url(${e.target.value})`; });
+
+    // Products admin
+    function addProduct(){
+      const name=$('#pName').value.trim(); const price=parseFloat($('#pPrice').value); const img=$('#pImg').value.trim();
+      if(!name || !img || !(price>=0)) return alert('Enter name, price, image URL');
+      const p = {
+        id: name.toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,24)+'-'+Math.floor(Math.random()*1000),
+        name,
+        price,
+        img,
+        cat: $('#pCat').value.trim(),
+        badge: $('#pBadge').value.trim(),
+        rating: parseFloat($('#pRating').value)||0,
+        sku: $('#pSKU').value.trim(),
+        stock: $('#pStock').value,
+        desc: $('#pDesc').value.trim()
+      };
+      state.data.products.unshift(p);
+      // clear inputs
+      ['pName','pPrice','pImg','pCat','pBadge','pRating','pSKU','pDesc'].forEach(id=> $('#'+id).value='');
+      save(); render();
+    }
+
+    function buildAdminList(){
+      const wrap = $('#productsAdmin'); if(!wrap) return; wrap.innerHTML='';
+      state.data.products.forEach((p,i)=>{
+        const box = el('div','item');
+        box.appendChild(el('div',null,`<strong>${p.name}</strong> — ${money(p.price)} <span class="subtle">(${p.cat||'—'}${p.badge? ' · '+p.badge:''})</span>`));
+        const grid = el('div'); grid.style.display='grid'; grid.style.gridTemplateColumns='100px 1fr'; grid.style.gap='10px';
+        const im = el('div','preview-img'); im.style.backgroundImage=`url(${p.img})`;
+        const meta = el('div','subtle', `SKU: ${p.sku||'—'} · Rating: ${p.rating||0} · Stock: ${p.stock==='out'?'Out':'In'}`);
+        grid.append(im, meta); box.appendChild(grid);
+        const row = el('div'); row.style.display='flex'; row.style.gap='8px';
+        const up = el('button','mutebtn'); up.textContent='↑'; up.title='Move up'; up.onclick=()=>{ if(i>0){ const t=state.data.products[i-1]; state.data.products[i-1]=state.data.products[i]; state.data.products[i]=t; save(); render(); } };
+        const dn = el('button','mutebtn'); dn.textContent='↓'; dn.title='Move down'; dn.onclick=()=>{ if(i<state.data.products.length-1){ const t=state.data.products[i+1]; state.data.products[i+1]=state.data.products[i]; state.data.products[i]=t; save(); render(); } };
+        const ed = el('button','mutebtn'); ed.textContent='Edit'; ed.onclick=()=>editProduct(i);
+        const rm = el('button','mutebtn danger'); rm.textContent='Delete'; rm.onclick=()=>{ if(confirm('Delete product?')){ state.data.products.splice(i,1); save(); render(); } };
+        row.append(up,dn,ed,rm); box.appendChild(row); wrap.appendChild(box);
+      });
+    }
+
+    function editProduct(i){
+      const p = state.data.products[i];
+      const name = prompt('Name', p.name); if(name===null) return;
+      const price = parseFloat(prompt('Price', p.price)); if(isNaN(price)) return alert('Invalid price');
+      const img = prompt('Image URL', p.img); if(img===null) return;
+      const cat = prompt('Category', p.cat||'');
+      const badge = prompt('Badge', p.badge||'');
+      const rating = parseFloat(prompt('Rating 0–5', p.rating||0))||0;
+      const sku = prompt('SKU', p.sku||'');
+      const stock = prompt('Stock (in/out)', p.stock||'in');
+      const desc = prompt('Description', p.desc||'');
+      Object.assign(p,{name,price,img,cat,badge,rating,sku,stock,desc}); save(); render();
+    }
+
+    function clearProducts(){ if(confirm('Remove ALL products from this browser copy?')){ state.data.products=[]; save(); render(); } }
+
+    // Import/Export/Snapshot
+    function exportJSON(){ const blob=new Blob([JSON.stringify(state.data,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='firoz-site-data.json'; a.click(); URL.revokeObjectURL(a.href); }
+    function importJSON(){ const inp=document.createElement('input'); inp.type='file'; inp.accept='application/json'; inp.onchange=e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ state.data=JSON.parse(r.result); save(); render(); alert('Imported!'); }catch(err){ alert('Invalid JSON'); } }; r.readAsText(f); }; inp.click(); }
+    function downloadSnapshot(){ const html=document.documentElement.outerHTML.replace(JSON.stringify(DEFAULTS), JSON.stringify(state.data)); const blob=new Blob([html],{type:'text/html'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='index.html'; a.click(); URL.revokeObjectURL(a.href); alert('Downloaded index.html with your current data. Upload to GitHub Pages.'); }
+
+    function changePIN(){
+      const current = $('#curPin').value.trim();
+      const stored = localStorage.getItem(PIN_KEY) || 'FIROZ-0000';
+      if(current!==stored) return alert('Current PIN is incorrect');
+      const np = $('#newPin').value.trim(); if(!np) return alert('Enter a new PIN');
+      localStorage.setItem(PIN_KEY, np); $('#curPin').value=''; $('#newPin').value=''; alert('PIN updated');
+    }
+
+    function resetData(){ if(confirm('This clears all site data on this device. Continue?')){ localStorage.removeItem(LS_KEY); state.data=DEFAULTS; save(); render(); alert('Data reset to defaults'); } }
+
+    /* =================== WA CHECKOUT =================== */
+    function buildWA(){
+      const lines = state.cart.map(it=>{ const p=itemById(it.id); return `• ${p.name} x ${it.qty} — ${money(p.price)}`; });
+      const text = encodeURIComponent(`Order from ${state.data.storeName}\n\n${lines.join('\n')}${lines.length?'\n\n':''}Subtotal: ${money(total())}\n\nDelivery area: ____\nPreferred time: ____\nPayment: UPI/COD`);
+      const waNum = state.data.whatsapp.replace(/[^\d]/g,'');
+      const url = `https://wa.me/${waNum}?text=${text}`;
+      $('#checkoutWA').href = url; $('#waLink').href = url;
+    }
+
+    /* =================== INIT =================== */
+    $('#openCart').addEventListener('click', ()=>toggleDrawer(true));
+    document.addEventListener('DOMContentLoaded', render);
+  </script>
+</body>
+</html>
